@@ -12,12 +12,15 @@ import './index.scss';
 
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import RootStore from './state/rootStore';
 
 library.add(faPlus, faBell, faCog, faSearch);
 
+const rootStore = new RootStore();
+
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <App rootStore={rootStore} />
   </React.StrictMode>,
   document.getElementById('root')
 );
