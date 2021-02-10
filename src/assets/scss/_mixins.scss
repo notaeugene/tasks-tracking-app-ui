@@ -1,0 +1,30 @@
+@mixin btn-reset() {
+  border: none;
+  box-shadow: none;
+  outline: none;
+}
+
+@mixin btn-active() {
+  transition: transform 0.3s;
+  transform: scale(1);
+
+  &:active {
+    transform: scale(0.95);
+  }
+}
+
+@mixin hover-color($color) {
+  transition: background-color 0.2s;
+
+  &:not(active):hover {
+    cursor: pointer;
+    background-color: $color;
+  }
+}
+
+@mixin input-reset() {
+  font: inherit;
+  border: none;
+  box-shadow: none;
+  outline: none;
+}

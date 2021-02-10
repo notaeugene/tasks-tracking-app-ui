@@ -1,0 +1,20 @@
+@import '../../../assets/scss//mixins';
+
+.button {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+  background-color: #e4e6eb;
+
+  @include btn-reset();
+  @include hover-color($color: #dadce7);
+  @include btn-active();
+}
+
+.icon {
+  width: 18px;
+  color: #484848;
+}

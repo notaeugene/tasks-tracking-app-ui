@@ -1,0 +1,29 @@
+@import '../../assets/scss/mixins';
+
+.wrapper {
+  position: relative;
+}
+
+.icon {
+  position: absolute;
+  left: 0.75rem;
+  top: 0.75rem;
+  color: #484848;
+}
+
+input {
+  width: 570px;
+  height: 40px;
+  padding-left: 40px;
+  background-color: #efefef;
+  border-radius: 20px;
+
+  &::-webkit-search-decoration,
+  &::-webkit-search-cancel-button,
+  &::-webkit-search-results-button,
+  &::-webkit-search-results-decoration {
+    -webkit-appearance: none;
+  }
+
+  @include input-reset();
+}
