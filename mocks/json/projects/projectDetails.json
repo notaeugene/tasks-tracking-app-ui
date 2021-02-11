@@ -1,0 +1,21 @@
+{
+  "id": 123,
+  "name": "Sample Project 1",
+  "tasks": [
+    {
+      "id": 321,
+      "name": "Sample Task 1",
+      "status": "NOT_STARTED"
+    },
+    {
+      "id": 321,
+      "name": "Sample Task 2",
+      "status": "IN_PROGRESS"
+    },
+    {
+      "id": 321,
+      "name": "Sample Task 3",
+      "status": "COMPLETED"
+    }
+  ]
+}

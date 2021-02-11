@@ -1,0 +1,26 @@
+[
+  {
+    "id": 123,
+    "name": "Sample Project 1",
+    "tasksCompleted": 3,
+    "tasksTotal": 3
+  },
+  {
+    "id": 124,
+    "name": "Sample Project 2",
+    "tasksCompleted": 1,
+    "tasksTotal": 1
+  },
+  {
+    "id": 125,
+    "name": "Sample Project 3",
+    "tasksCompleted": 2,
+    "tasksTotal": 4
+  },
+  {
+    "id": 126,
+    "name": "Sample Project 4",
+    "tasksCompleted": 0,
+    "tasksTotal": 5
+  }
+]

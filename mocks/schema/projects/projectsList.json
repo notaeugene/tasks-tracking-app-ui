@@ -1,0 +1,28 @@
+{
+  "title": "Projects list",
+  "type": "array",
+  "items": {
+    "$ref": "#/$defs/projectsListItem"
+  },
+  "$defs": {
+    "projectsListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "tasksCompleted": {
+          "type": "number"
+        },
+        "tasksTotal": {
+          "type": "number"
+        }
+      },
+      "additionalProperties": false,
+      "required": ["id", "name", "tasksCompleted", "tasksTotal"]
+    }
+  }
+}

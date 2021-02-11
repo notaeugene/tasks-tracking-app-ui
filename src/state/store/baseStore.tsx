@@ -14,9 +14,14 @@ export default abstract class BaseStore<T> {
     this.isLoading = true;
 
     try {
-      const response = await fetchFn();
-      this.data = response.data;
+      if (!this.data) {
+        const response = await fetchFn(); // TODO: handle http errors
+        this.data = response.data;
+        return this.data;
+      }
     } catch (err) {
+      console.log(err);
+
       this.error = err;
     } finally {
       this.isLoading = false;

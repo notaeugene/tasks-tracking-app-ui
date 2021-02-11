@@ -1,9 +1,17 @@
 .card {
   background-color: #fff;
   border-radius: 0.35rem;
-  box-shadow: 0 2px 2px 0 rgba($color: #000000, $alpha: 0.05);
+  position: relative;
 }
 
 .body {
   padding: 1rem;
+}
+
+.withShadow {
+  box-shadow: 0 2px 2px 0 rgba($color: #000000, $alpha: 0.05);
+}
+
+.bordered {
+  border: 1px solid #f0f0f0;
 }

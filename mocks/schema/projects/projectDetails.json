@@ -1,0 +1,39 @@
+{
+  "title": "Project details",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "number"
+    },
+    "name": {
+      "type": "string"
+    },
+    "tasks": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/tasksListItem"
+      }
+    }
+  },
+  "$defs": {
+    "tasksListItem": {
+      "type": "object",
+      "properties": {
+        "id": {
+          "type": "number"
+        },
+        "name": {
+          "type": "string"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["NOT_STARTED", "IN_PROGRESS", "COMPLETED"]
+        }
+      },
+      "additionalProperties": false,
+      "required": ["id", "name", "status"]
+    }
+  },
+  "additionalProperties": false,
+  "required": ["id", "name", "tasks"]
+}
