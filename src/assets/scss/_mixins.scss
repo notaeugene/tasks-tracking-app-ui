@@ -2,13 +2,17 @@
   border: none;
   box-shadow: none;
   outline: none;
+
+  &:disabled {
+    cursor: default !important;
+  }
 }
 
 @mixin btn-active() {
   transition: transform 0.3s;
   transform: scale(1);
 
-  &:active {
+  &:not(:disabled):active {
     transform: scale(0.95);
   }
 }
@@ -16,7 +20,7 @@
 @mixin hover-color($color) {
   transition: background-color 0.2s;
 
-  &:not(active):hover {
+  &:hover {
     cursor: pointer;
     background-color: $color;
   }
@@ -24,7 +28,6 @@
 
 @mixin input-reset() {
   font: inherit;
-  border: none;
   box-shadow: none;
   outline: none;
 }

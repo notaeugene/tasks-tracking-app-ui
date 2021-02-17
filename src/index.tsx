@@ -7,6 +7,11 @@ import {
   faCog,
   faSearch,
   faEllipsisV,
+  faTimes,
+  faCheck,
+  faExclamationTriangle,
+  faTrash,
+  faPen,
 } from '@fortawesome/free-solid-svg-icons';
 
 import './index.scss';
@@ -15,7 +20,18 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import RootStore from './state/rootStore';
 
-library.add(faPlus, faBell, faCog, faSearch, faEllipsisV);
+library.add(
+  faPlus,
+  faBell,
+  faCog,
+  faSearch,
+  faEllipsisV,
+  faTimes,
+  faCheck,
+  faExclamationTriangle,
+  faTrash,
+  faPen
+);
 
 const rootStore = new RootStore();
 

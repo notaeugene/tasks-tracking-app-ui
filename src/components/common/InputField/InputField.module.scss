@@ -1,0 +1,30 @@
+@import '../../../assets/scss/mixins';
+
+.inputField {
+  width: 100%;
+  height: 40px;
+  padding-left: 12px;
+  padding-right: 12px;
+  border: 1px solid #ced0d4;
+  border-radius: 6px;
+
+  @include input-reset();
+}
+
+.inputLabel {
+  display: block;
+  font-weight: bold;
+  margin-bottom: 1rem;
+}
+
+.inputError {
+  border-color: #e23c3c;
+}
+
+.errorMessage {
+  display: block;
+  margin-top: 0.5rem;
+  padding-left: 12px;
+  font-size: 0.85rem;
+  color: #e23c3c;
+}
