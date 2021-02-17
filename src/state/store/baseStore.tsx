@@ -1,30 +1,48 @@
 import { AxiosResponse } from 'axios';
+import { flow, makeObservable, observable } from 'mobx';
 
 import HttpService from '../../services/http';
-import { Nullable } from '../../utils/types';
+import { HttpMethod, Nullable } from '../../utils/types';
 
 export default abstract class BaseStore<T> {
   public data: Nullable<T> = null;
   public error: Nullable<Error> = null;
-  public isLoading = false;
+  public loading = false;
+  public saved = false;
 
   protected http = new HttpService();
 
-  protected async fetch(fetchFn: () => Promise<AxiosResponse<T>>) {
-    this.isLoading = true;
+  constructor() {
+    makeObservable(this, {
+      data: observable,
+      error: observable,
+      loading: observable,
+      saved: observable,
+      fetch: flow,
+    });
+  }
+
+  public *fetch(fetchFn: () => Promise<AxiosResponse<T>>) {
+    this.loading = true;
+    this.saved = false;
 
     try {
-      if (!this.data) {
-        const response = await fetchFn(); // TODO: handle http errors
-        this.data = response.data;
-        return this.data;
+      const response = yield fetchFn();
+      const { data, config } = response;
+      const method = config.method.toUpperCase();
+
+      this.data = data;
+      this.error = null;
+
+      if (method !== HttpMethod.GET) {
+        this.saved = true;
       }
     } catch (err) {
-      console.log(err);
-
       this.error = err;
     } finally {
-      this.isLoading = false;
+      this.loading = false;
     }
+
+    return this.data;
   }
 }

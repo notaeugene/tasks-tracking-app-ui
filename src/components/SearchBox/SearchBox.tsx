@@ -29,7 +29,7 @@ const SearchBox: React.FC<SearchBoxProps> = ({ onSearch }) => {
       <input
         type="search"
         placeholder={PLACEHOLDER}
-        className={styles.input}
+        className={styles.inputField}
         value={searchTerm}
         onChange={handleSearchTermChange}
         onKeyUp={handleKeyUp}

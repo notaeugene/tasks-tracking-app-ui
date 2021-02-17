@@ -10,7 +10,7 @@ export default class HttpService {
   constructor() {
     this._http = axios.create({
       baseURL: apiUrl(),
-      timeout: 1000,
+      timeout: 3000,
     });
 
     this._http.interceptors.request.use(

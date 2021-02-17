@@ -1,0 +1,69 @@
+.wrapper {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 10;
+}
+
+.modal {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  border-radius: 6px;
+}
+
+.modalSmall {
+  width: 400px;
+}
+
+.modalLarge {
+  width: 625px;
+}
+
+.backdrop {
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: rgba($color: #000000, $alpha: 0.5);
+  cursor: pointer;
+}
+
+.header {
+  padding: 1.45rem 1rem;
+  display: flex;
+  justify-content: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  border-bottom: 1px solid #ced0d4;
+}
+
+.headerLeft {
+  justify-content: flex-start;
+}
+
+.btnClose {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+}
+
+.body {
+  padding: 1rem;
+}
+
+.footer {
+  padding: 1rem;
+  display: flex;
+  justify-content: flex-end;
+  border-top: 1px solid #ced0d4;
+
+  > button {
+    margin-left: 0.5rem;
+  }
+}

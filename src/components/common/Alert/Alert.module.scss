@@ -1,0 +1,60 @@
+.wrapper {
+  position: fixed;
+  top: 5rem;
+  right: 1rem;
+  z-index: 9;
+}
+
+.alert {
+  padding-right: 1rem;
+  display: flex;
+  align-items: center;
+  background-color: #fff;
+  border-radius: 6px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+}
+
+.statusWrapper {
+  margin-right: 1rem;
+  width: 80px;
+  height: 80px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+}
+
+.status {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+
+.success {
+  background-color: #61bd4f;
+}
+
+.error {
+  background-color: #e23c3c;
+}
+
+.title {
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.icon {
+  color: #fff;
+}
+
+.message {
+  font-size: 14px;
+}
+
+.btnClose {
+  margin-left: 1rem;
+}

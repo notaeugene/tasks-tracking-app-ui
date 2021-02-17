@@ -1,0 +1,35 @@
+@import '../../../../assets/scss/mixins';
+
+.item {
+  padding: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:not(:last-child) {
+    margin-bottom: 0.5rem;
+  }
+
+  @include hover-color($color: #f5f9ff);
+  @include btn-active();
+}
+
+.text {
+  color: #484848;
+  font-weight: bold;
+  font-size: 14px;
+}
+
+.icon {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.8em;
+  color: #484848;
+  background-color: #f0f0f0;
+  border-radius: 3px;
+}
