@@ -15,7 +15,6 @@ router.get(
   getMockData({
     schema: require('../schema/projects/projectsList.json'),
     json: require('../json/projects/projectsList.json'),
-    // json: [],
   })
 );
 router.post(
