@@ -33,14 +33,20 @@
     "@types/react-transition-group": "^4.4.0",
     "@types/recompose": "^0.30.7",
     "dtsgenerator": "^3.7.0",
+    "jest-playwright-preset": "^1.4.7",
     "node-sass": "^5.0.0",
-    "typescript": "^4.1.2"
+    "playwright": "^1.9.1",
+    "serve": "^11.3.2",
+    "ts-jest": "^26.5.2",
+    "typescript": "^4.1.2",
+    "wait-on": "^5.2.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
-    "test": "react-scripts test",
-    "eject": "react-scripts eject",
+    "test:unit": "react-scripts test",
+    "test:e2e": "jest -c ./jest-playwright.config.js",
+    "ci": "node ./ci.js",
     "build-types": "dtsgen --out ./src/types.d.ts ./mocks/schema/**/*.json"
   },
   "eslintConfig": {
