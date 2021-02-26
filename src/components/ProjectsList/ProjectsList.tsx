@@ -11,6 +11,10 @@ import withLoading, {
 
 import styles from './ProjectsList.module.scss';
 
+export const NoProjectsFallback = () => (
+  <div className={styles.noProjects}>You don't have any projects yet.</div>
+);
+
 export type ProjectsListProps = LoadingProps & {
   projects: Nullable<ProjectsListItem[]>;
   onUpdateProject: (id: number) => void;
@@ -84,5 +88,6 @@ const ProjectsList: React.FC<ProjectsListProps> = ({
 };
 
 export default withLoading<ProjectsListProps>(
-  (props) => props.projects !== null && !props.projects.length
+  (props) => props.projects !== null && !props.projects.length,
+  NoProjectsFallback
 )(ProjectsList);
