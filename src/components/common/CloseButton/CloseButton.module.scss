@@ -1,0 +1,17 @@
+@import '../../../assets/scss/mixins';
+
+.btn {
+  width: 40px;
+  height: 40px;
+  border-radius: 20px;
+  background-color: #e4e6eb;
+
+  @include btn-reset();
+  @include btn-active();
+  @include hover-color($color: #dadce7);
+}
+
+.icon {
+  font-size: 1.5em;
+  color: #8f8f8f;
+}

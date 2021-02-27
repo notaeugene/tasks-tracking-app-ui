@@ -1,0 +1,40 @@
+@import '../../../assets/scss/mixins';
+
+.btn {
+  min-width: 95px;
+  height: 40px;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font: inherit;
+  font-weight: bold;
+  border-radius: 6px;
+  cursor: pointer;
+
+  &:disabled {
+    opacity: 0.5;
+  }
+
+  @include btn-reset();
+  @include btn-active();
+}
+
+.btnPrimary {
+  color: #fff;
+  background-color: #227bef;
+
+  @include hover-color($color: #1d6dd6);
+}
+
+.btnSecondary {
+  color: #227bef;
+  background-color: #f0f0f0;
+
+  @include hover-color($color: #e4e4e4);
+}
+
+.btnDanger {
+  color: #fff;
+  background-color: #e23c3c;
+
+  @include hover-color($color: #c93939);
+}

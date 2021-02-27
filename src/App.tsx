@@ -2,7 +2,7 @@ import { observer } from 'mobx-react';
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 
-import PageKit from './components/layout/PageKit/PageKit';
+import DefaultLayout from './components/layout/DefaultLayout/DefaultLayout';
 import Homepage from './pages/Homepage/Homepage';
 import RootStore from './state/rootStore';
 
@@ -11,17 +11,21 @@ export type AppProps = {
 };
 
 const App = observer(({ rootStore }: AppProps) => {
-  const { projectsStore } = rootStore;
+  const { uiStore, projectsStore, projectDetailsStore } = rootStore;
 
   return (
     <Router>
-      <PageKit>
+      <DefaultLayout rootStore={rootStore}>
         <Switch>
           <Route exact path="/">
-            <Homepage projectsStore={projectsStore} />
+            <Homepage
+              uiStore={uiStore}
+              projectsStore={projectsStore}
+              projectDetailsStore={projectDetailsStore}
+            />
           </Route>
         </Switch>
-      </PageKit>
+      </DefaultLayout>
     </Router>
   );
 });

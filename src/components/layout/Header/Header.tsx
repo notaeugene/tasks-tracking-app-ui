@@ -7,12 +7,16 @@ import SearchBox from '../../SearchBox/SearchBox';
 
 import styles from './Header.module.scss';
 
+export type HeaderPros = {
+  onProjectCreate: () => void;
+};
+
 export const MENU_LINKS = [
   { name: 'My Projects', path: '/' },
   { name: 'Summary', path: '/summary' },
 ];
 
-const Header: React.FC = () => {
+const Header: React.FC<HeaderPros> = ({ onProjectCreate }) => {
   const location = useLocation();
 
   return (
@@ -32,7 +36,7 @@ const Header: React.FC = () => {
       </div>
       <SearchBox onSearch={() => {}} />
       <div className={styles.actionButtons}>
-        <ActionButton icon="plus" onClick={() => {}} />
+        <ActionButton icon="plus" onClick={onProjectCreate} />
         <ActionButton icon="bell" onClick={() => {}} />
         <ActionButton icon="cog" onClick={() => {}} />
       </div>

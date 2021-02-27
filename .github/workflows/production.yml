@@ -1,0 +1,82 @@
+name: Production workflow
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install dependencies
+        run: yarn install
+      - name: Build an application
+        run: yarn build
+      - name: Run unit tests
+        run: yarn test:unit
+        env:
+          CI: true
+          REACT_APP_API_BASE_URL: ${{ secrets.API_URL }}
+
+  e2e:
+    needs: build
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install dependencies
+        run: yarn install
+      - name: Build an application
+        run: yarn build
+      - name: Run E2E tests
+        run: yarn ci
+        env:
+          CI: true
+          REACT_APP_API_BASE_URL: ${{ secrets.API_URL }}
+      - name: Upload reports to Katalon TestOps
+        uses: katalon-studio/report-uploader@v0.0.8
+        env:
+          PASSWORD: ${{ secrets.KATALON_PASSWORD }}
+          PROJECT_ID: ${{ secrets.KATALON_PROJECT_ID }}
+          TYPE: junit
+          REPORT_PATH: e2e/reports
+
+  deploy:
+    needs: [build, e2e]
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v1
+      - name: Setup Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install dependencies
+        run: yarn install
+      - name: Build an application
+        run: yarn build
+        env:
+          CI: true
+          REACT_APP_API_BASE_URL: ${{ secrets.API_URL }}
+      - name: Deploy to Netlify
+        uses: netlify/actions/cli@master
+        env:
+          NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
+          NETLIFY_SITE_ID: ${{ secrets.NETLIFY_SITE_ID }}
+        with:
+          args: deploy --dir=build --prod
+          secrets: '["NETLIFY_AUTH_TOKEN", "NETLIFY_SITE_ID"]'
