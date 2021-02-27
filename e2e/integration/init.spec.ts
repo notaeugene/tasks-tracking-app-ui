@@ -21,5 +21,5 @@ afterEach(async () => {
 
 it('should work', async () => {
   await page.goto(env.REACT_APP_BASE_URL);
-  expect(await page.title()).toBe('Task Tracking Ap');
+  expect(await page.title()).toBe('Task Tracking App');
 });
