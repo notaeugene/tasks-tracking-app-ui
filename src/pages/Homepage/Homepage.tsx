@@ -37,7 +37,6 @@ const Homepage: React.FC<HomepageProps> = ({
   const {
     preloading: preloadingProjectDetails,
     data: projectDetails,
-    saved,
     error,
     updateProject,
     getProjectById,
