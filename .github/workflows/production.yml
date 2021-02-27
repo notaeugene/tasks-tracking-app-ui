@@ -6,7 +6,28 @@ on:
       - 'v*'
 
 jobs:
-  test:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup Node.js 12.x
+        uses: actions/setup-node@v1
+        with:
+          node-version: 12.x
+      - name: Install dependencies
+        run: yarn install
+      - name: Build an application
+        run: yarn build
+      - name: Run unit tests
+        run: yarn test:unit
+        env:
+          CI: true
+          REACT_APP_API_BASE_URL: ${{ secrets.API_URL }}
+
+  e2e:
+    needs: build
+
     runs-on: ubuntu-latest
 
     steps:
@@ -33,7 +54,7 @@ jobs:
           REPORT_PATH: e2e/reports
 
   deploy:
-    needs: test
+    needs: [build, e2e]
 
     runs-on: ubuntu-latest
 
@@ -51,7 +72,7 @@ jobs:
         env:
           CI: true
           REACT_APP_API_BASE_URL: ${{ secrets.API_URL }}
-      - name: Deploy to netlify
+      - name: Deploy to Netlify
         uses: netlify/actions/cli@master
         env:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
